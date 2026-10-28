@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AeroFile Studio - Frontend Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="background">
+    <div class="grid-floor"></div>
+    <div class="background-glow"></div>
+    <div class="light-beam beam-one"></div>
+    <div class="light-beam beam-two"></div>
+  </div>
+
+  <header class="top-header">
+    <div class="brand-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M7 3h7l5 5v13H7z"/>
+        <path d="M14 3v6h5M10 13h6M10 17h6"/>
+      </svg>
+    </div>
+
+    <div class="brand-details">
+      <h1>
+        AeroFile Studio
+        <span>v2.4 Pro</span>
+      </h1>
+      <p>Next-Gen Asset Processing Studio • Frontend Demo</p>
+    </div>
+
+    <div class="header-status">
+      <span class="status-dot"></span>
+      <span id="heroStatus">Asset Ready</span>
+    </div>
+  </header>
+
+  <main class="page-content">
+
+    <!-- 3D HERO SECTION -->
+    <section class="hero-panel">
+      <div class="hero-glow"></div>
+
+      <div class="hero-badge badge-left">
+        <span>✦</span>
+        <span id="heroFileStatus">Waiting for file</span>
+      </div>
+
+      <div class="hero-badge badge-right">
+        <span>✓</span>
+        <span id="heroSceneStatus">Ready</span>
+      </div>
+
+      <div class="orbit orbit-one"></div>
+      <div class="orbit orbit-two"></div>
+      <div class="orbit orbit-three"></div>
+      <div class="orbit orbit-four"></div>
+
+      <div class="orbit-particle particle-one"></div>
+      <div class="orbit-particle particle-two"></div>
+      <div class="orbit-particle particle-three"></div>
+      <div class="orbit-particle particle-four"></div>
+      <div class="orbit-particle particle-five"></div>
+      <div class="orbit-particle particle-six"></div>
+
+      <div class="floating-icon float-one">▧</div>
+      <div class="floating-icon float-two">▤</div>
+      <div class="floating-icon float-three">{ }</div>
+      <div class="floating-icon float-four">PDF</div>
+      <div class="floating-icon float-five">✧</div>
+
+      <!-- REAL 3D CUBE - NOT A FLAT SQUARE -->
+      <div class="cube-stage" id="cubeStage">
+        <div class="cube-shadow"></div>
+
+        <div class="payload-cube" id="payloadCube">
+          <div class="cube-face front-face">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 3h7l5 5v13H7z"/>
+              <path d="M14 3v5h5M10 13h6M10 17h6"/>
+            </svg>
+          </div>
+
+          <div class="cube-face back-face">
+            <span>AF</span>
+          </div>
+
+          <div class="cube-face right-face">
+            <div class="cube-mesh"></div>
+          </div>
+
+          <div class="cube-face left-face">
+            <span>3D</span>
+          </div>
+
+          <div class="cube-face top-face">
+            <div class="cube-shine"></div>
+          </div>
+
+          <div class="cube-face bottom-face"></div>
+        </div>
+      </div>
+
+      <p class="hero-caption">
+        <span>◎</span>
+        Move your cursor over the PAYLOAD box to rotate it in 3D
+      </p>
+    </section>
+
+    <!-- FILE INFORMATION AND PROGRESS -->
+    <section class="file-panel" id="filePanel">
+      <div class="file-row">
+        <div class="file-icon tilt-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M7 3h7l5 5v13H7z"/>
+            <path d="M14 3v5h5"/>
+          </svg>
+        </div>
+
+        <div class="file-details">
+          <h3 id="fileName">No file selected</h3>
+          <p>
+            <span id="fileSize">Choose a file to get started</span>
+            <span>•</span>
+            <span class="verification-dot">●</span>
+            <span id="verificationStatus">Waiting for file</span>
+          </p>
+        </div>
+
+        <button
+          class="remove-button"
+          id="removeFile"
+          type="button"
+          aria-label="Remove selected file"
+        >×</button>
+      </div>
+
+      <div class="progress-panel">
+        <div class="progress-heading">
+          <span id="progressMessage">Upload a file to begin processing.</span>
+          <strong id="progressPercent">0%</strong>
+        </div>
+
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="Processing progress"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          id="progressTrack"
+        >
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 1: UPLOAD -->
+    <section class="workflow-card upload-section tilt-section" id="uploadSection">
+      <div class="section-copy">
+        <div class="section-label">
+          <span class="step-number">01</span>
+          <span>STEP ONE • UPLOAD</span>
+        </div>
+
+        <h2>Upload Your File</h2>
+        <p>
+          Select your file to get started. Your selected file
+          will appear in the asset panel above.
+        </p>
+
+        <div class="feature-chip">
+          <span>●</span>
+          <span>Secure file selection</span>
+        </div>
+
+        <label class="action-button upload-button tilt-card" for="fileInput">
+          <span class="action-icon tilt-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 16V4"/>
+              <path d="m7 9 5-5 5 5"/>
+              <path d="M5 14v5h14v-5"/>
+            </svg>
+          </span>
+
+          <span class="action-copy">
+            <strong>Upload File</strong>
+            <small>Browse system</small>
+          </span>
+
+          <span class="action-arrow">→</span>
+        </label>
+
+        <input type="file" id="fileInput" hidden>
+      </div>
+
+      <div class="illustration upload-illustration">
+        <div class="mini-orbit orbit-upload-a"></div>
+        <div class="mini-orbit orbit-upload-b"></div>
+        <div class="mini-orbit orbit-upload-c"></div>
+
+        <div class="mini-file mini-a tilt-icon">PDF</div>
+        <div class="mini-file mini-b tilt-icon">DOC</div>
+        <div class="mini-file mini-c tilt-icon">{ }</div>
+        <div class="mini-file mini-d tilt-icon">▧</div>
+
+        <div class="illustration-icon tilt-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 16V4"/>
+            <path d="m7 9 5-5 5 5"/>
+            <path d="M5 14v5h14v-5"/>
+          </svg>
+        </div>
+
+        <div class="illustration-light"></div>
+      </div>
+    </section>
+
+    <div class="scroll-divider">
+      <span></span>
+      <a href="#processSection">NEXT STEP ↓</a>
+      <span></span>
+    </div>
+
+    <!-- STEP 2: PROCESS -->
+    <section class="workflow-card process-section tilt-section" id="processSection">
+      <div class="section-copy">
+        <div class="section-label purple-label">
+          <span class="step-number">02</span>
+          <span>STEP TWO • PROCESS</span>
+        </div>
+
+        <h2>Start Processing</h2>
+        <p>
+          Start the demo processing sequence and watch the
+          progress bar move from zero to one hundred percent.
+        </p>
+
+        <div class="feature-chip purple-chip">
+          <span>✦</span>
+          <span>Live progress animation</span>
+        </div>
+
+        <button class="action-button process-button tilt-card"
+          id="processBtn" type="button">
+          <span class="action-icon tilt-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="m8 5 12 7-12 7z"/>
+            </svg>
+          </span>
+
+          <span class="action-copy">
+            <strong>Process</strong>
+            <small>Start processing</small>
+          </span>
+
+          <span class="action-arrow">→</span>
+        </button>
+      </div>
+
+      <div class="illustration process-illustration">
+        <div class="mini-orbit orbit-process-a"></div>
+        <div class="mini-orbit orbit-process-b"></div>
+        <div class="mini-orbit orbit-process-c"></div>
+
+        <div class="mini-file mini-a tilt-icon">AI</div>
+        <div class="mini-file mini-b tilt-icon">⚙</div>
+        <div class="mini-file mini-c tilt-icon">✓</div>
+        <div class="mini-file mini-d tilt-icon">01</div>
+
+        <div class="mini-cube-stage tilt-icon">
+          <div class="mini-cube">
+            <div class="mini-cube-face mini-cube-front">A</div>
+            <div class="mini-cube-face mini-cube-back">F</div>
+            <div class="mini-cube-face mini-cube-right">3</div>
+            <div class="mini-cube-face mini-cube-left">D</div>
+            <div class="mini-cube-face mini-cube-top"></div>
+            <div class="mini-cube-face mini-cube-bottom"></div>
+          </div>
+        </div>
+
+        <div class="illustration-light"></div>
+      </div>
+    </section>
+
+    <div class="scroll-divider">
+      <span></span>
+      <a href="#downloadSection">FINAL STEP ↓</a>
+      <span></span>
+    </div>
+
+    <!-- STEP 3: DOWNLOAD -->
+    <section class="workflow-card download-section tilt-section" id="downloadSection">
+      <div class="section-copy">
+        <div class="section-label green-label">
+          <span class="step-number">03</span>
+          <span>STEP THREE • DOWNLOAD</span>
+        </div>
+
+        <h2>Get Your File</h2>
+        <p>
+          Once the demo processing reaches 100%, download
+          your selected file using the button below.
+        </p>
+
+        <div class="feature-chip green-chip">
+          <span>✓</span>
+          <span>Ready to export</span>
+        </div>
+
+        <button class="action-button download-button tilt-card"
+          id="downloadBtn" type="button" disabled>
+          <span class="action-icon tilt-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 4v12"/>
+              <path d="m7 11 5 5 5-5"/>
+              <path d="M5 19h14"/>
+            </svg>
+          </span>
+
+          <span class="action-copy">
+            <strong>Download File</strong>
+            <small>Export asset</small>
+          </span>
+
+          <span class="action-arrow">→</span>
+        </button>
+      </div>
+
+      <div class="illustration download-illustration">
+        <div class="mini-orbit orbit-download-a"></div>
+        <div class="mini-orbit orbit-download-b"></div>
+        <div class="mini-orbit orbit-download-c"></div>
+
+        <div class="mini-file mini-a tilt-icon">✓</div>
+        <div class="mini-file mini-b tilt-icon">PDF</div>
+        <div class="mini-file mini-c tilt-icon">↓</div>
+        <div class="mini-file mini-d tilt-icon">ZIP</div>
+
+        <div class="download-cube">
+          <div class="download-cube-face download-cube-front">↓</div>
+          <div class="download-cube-face download-cube-back">✓</div>
+          <div class="download-cube-face download-cube-right">A</div>
+          <div class="download-cube-face download-cube-left">F</div>
+          <div class="download-cube-face download-cube-top"></div>
+          <div class="download-cube-face download-cube-bottom"></div>
+        </div>
+
+        <div class="illustration-light"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>AEROFILE STUDIO</span>
+    <span>SECURE WORKSPACE • FRONTEND DEMO</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
